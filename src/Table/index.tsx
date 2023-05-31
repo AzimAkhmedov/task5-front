@@ -25,8 +25,8 @@ const TablePage = () => {
       e.target.scrollHeight - e.target.scrollTop - e.target.clientHeight < 1;
     if (bottom) {
       console.log("bottom");
-      dispatch(getMoreUsers({ seed: seed + 1, reg, err: misspells }));
-      setSeed(seed + 1);
+      dispatch(getMoreUsers({ seed: seed + 20, reg, err: misspells }));
+      setSeed(seed + 20);
     }
   };
 
@@ -99,8 +99,34 @@ const TablePage = () => {
               }}
               aria-label="Small"
               valueLabelDisplay="auto"
-              max={1000}
+              max={10}
             />{" "}
+            <input
+              type="text"
+              placeholder="максимум до 1000"
+              value={misspells}
+              onChange={(e) => {
+                if (Number(e.target.value) > 1000) {
+                  setMissples(1000);
+                  dispatch(
+                    getTenUsers({
+                      seed,
+                      reg,
+                      err: 1000,
+                    })
+                  );
+                } else {
+                  setMissples(Number(e.target.value));
+                  dispatch(
+                    getTenUsers({
+                      seed,
+                      reg,
+                      err: Number(e.target.value),
+                    })
+                  );
+                }
+              }}
+            />
             <span>Кол-во Ошибок в каждом пользователе</span>
           </div>
         </div>
@@ -113,7 +139,6 @@ const TablePage = () => {
           aria-label="sticky table"
           className="table"
 
-          // ref={listInnerRef}
         >
           <thead>
             <tr>
