@@ -1,0 +1,32 @@
+.root {
+  .table {
+    thead {
+      tr {
+        th {
+          font-size: 20px;
+        }
+      }
+    }
+    tbody {
+      tr {
+        th {
+          font-size: 18px;
+        }
+      }
+    }
+  }
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    .slider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50%;
+      flex-direction: column;
+    }
+  }
+}
